@@ -53,6 +53,11 @@ public class PersonalFrame extends javax.swing.JFrame {
         });
 
         RemoveButton.setText("Usuń");
+        RemoveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ButtonPanelLayout = new javax.swing.GroupLayout(ButtonPanel);
         ButtonPanel.setLayout(ButtonPanelLayout);
@@ -121,19 +126,38 @@ public class PersonalFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
-        int selected = personalTable.getSelectedRow();
-        if (selected >= 0){
-            PersonalDialog dialog = new PersonalDialog(this, true);
-            dialog.setPerson(model.getPerson(selected));
-            dialog.setVisible(true);
-            model.setPerson(dialog.getPerson(), selected);
+        if(model.getValueAt(personalTable.getSelectedRow(), 0) == ""){
+            
+        }
+        else{
+            int selected = personalTable.getSelectedRow();
+            if (selected >= 0){
+                PersonalDialog dialog = new PersonalDialog(this, true);
+                dialog.setPerson(model.getPerson(selected));
+                dialog.setVisible(true);
+                model.setPerson(dialog.getPerson(), selected);
+        }
         }
     }//GEN-LAST:event_EditButtonActionPerformed
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-       
-        
+          if(model.getValueAt(personalTable.getSelectedRow(), 0) != ""){
+            
+        }
+        else{
+            int selected = personalTable.getSelectedRow();
+            if (selected >= 0){
+                PersonalDialog dialog = new PersonalDialog(this, true);
+                dialog.setPerson(model.getPerson(selected));
+                dialog.setVisible(true);
+                model.setPerson(dialog.getPerson(), selected);
+        }
+        }
     }//GEN-LAST:event_AddButtonActionPerformed
+
+    private void RemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveButtonActionPerformed
+        
+    }//GEN-LAST:event_RemoveButtonActionPerformed
 
     /**
      * @param args the command line arguments
