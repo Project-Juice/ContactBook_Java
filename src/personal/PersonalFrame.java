@@ -35,8 +35,23 @@ public class PersonalFrame extends javax.swing.JFrame {
         TablePanel = new javax.swing.JPanel();
         ScrollPanel = new javax.swing.JScrollPane();
         personalTable = new javax.swing.JTable();
+        mainMenuBar = new javax.swing.JMenuBar();
+        fileMenu = new javax.swing.JMenu();
+        newMenuItem = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        openMenuItem = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        saveMenuItem = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        removeMenuItem = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        closeMenuItem = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        ButtonPanel.setToolTipText("");
 
         EditButton.setText("Edytuj");
         EditButton.addActionListener(new java.awt.event.ActionListener() {
@@ -66,20 +81,21 @@ public class PersonalFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
                 .addContainerGap(232, Short.MAX_VALUE)
                 .addComponent(AddButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EditButton)
                 .addGap(5, 5, 5)
+                .addComponent(EditButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RemoveButton)
                 .addContainerGap())
         );
         ButtonPanelLayout.setVerticalGroup(
             ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ButtonPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EditButton)
                     .addComponent(AddButton)
+                    .addComponent(EditButton)
                     .addComponent(RemoveButton))
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         personalTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -103,8 +119,48 @@ public class PersonalFrame extends javax.swing.JFrame {
         );
         TablePanelLayout.setVerticalGroup(
             TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TablePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        fileMenu.setText("Plik");
+
+        newMenuItem.setText("Nowy");
+        newMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(newMenuItem);
+        fileMenu.add(jSeparator1);
+
+        openMenuItem.setText("Otwórz");
+        fileMenu.add(openMenuItem);
+        fileMenu.add(jSeparator2);
+
+        saveMenuItem.setText("Zapisz");
+        fileMenu.add(saveMenuItem);
+        fileMenu.add(jSeparator3);
+
+        removeMenuItem.setText("Usuń");
+        fileMenu.add(removeMenuItem);
+        fileMenu.add(jSeparator4);
+
+        closeMenuItem.setText("Zamknij");
+        fileMenu.add(closeMenuItem);
+
+        mainMenuBar.add(fileMenu);
+
+        jMenu2.setText("Edytuj");
+
+        jMenuItem6.setText("Edytuj");
+        jMenu2.add(jMenuItem6);
+
+        mainMenuBar.add(jMenu2);
+
+        setJMenuBar(mainMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,10 +172,9 @@ public class PersonalFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(TablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 235, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(ButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -141,23 +196,18 @@ public class PersonalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_EditButtonActionPerformed
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-          if(model.getValueAt(personalTable.getSelectedRow(), 0) != ""){
-            
-        }
-        else{
-            int selected = personalTable.getSelectedRow();
-            if (selected >= 0){
-                PersonalDialog dialog = new PersonalDialog(this, true);
-                dialog.setPerson(model.getPerson(selected));
-                dialog.setVisible(true);
-                model.setPerson(dialog.getPerson(), selected);
-        }
-        }
+
+
     }//GEN-LAST:event_AddButtonActionPerformed
 
     private void RemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveButtonActionPerformed
-        
+     
+               
     }//GEN-LAST:event_RemoveButtonActionPerformed
+
+    private void newMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +251,19 @@ public class PersonalFrame extends javax.swing.JFrame {
     private javax.swing.JButton RemoveButton;
     private javax.swing.JScrollPane ScrollPanel;
     private javax.swing.JPanel TablePanel;
+    private javax.swing.JMenuItem closeMenuItem;
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JMenuBar mainMenuBar;
+    private javax.swing.JMenuItem newMenuItem;
+    private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JTable personalTable;
+    private javax.swing.JMenuItem removeMenuItem;
+    private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
 }

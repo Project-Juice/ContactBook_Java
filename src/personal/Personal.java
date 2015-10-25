@@ -15,6 +15,8 @@ public class Personal {
     private String sex;
     private Integer age;
     private Boolean games;
+    private String contact;
+
     
     public Personal(String name, String sex, Integer age, Boolean games){
         this.name = name;
@@ -60,6 +62,12 @@ public class Personal {
     public Boolean getGames() {
         return games;
     }
-    
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }  
     
 }

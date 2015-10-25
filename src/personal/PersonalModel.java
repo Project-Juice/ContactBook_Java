@@ -5,19 +5,22 @@
  */
 package personal;
 
+import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
+
 
 /**
  *
  * @author kornelia
  */
 public class PersonalModel extends AbstractTableModel{
-    private Personal[] person = new Personal[12];
-    public PersonalModel() {
-        person[0] = new Personal("Mieciu","Mężczyzna",24,true);
-        person[1] = new Personal("Grażyna","Kobieta",23,true);
-        person[2] = new Personal("Zdzisiu","Mężczyzna",24,false);
-    }
+    private int rows = 1;
+    private Personal[] person = new Personal[rows];
+   
+    Path p = Paths.get("~/plik.txt"); 
     
     @Override
     public int getRowCount() {
@@ -27,7 +30,7 @@ public class PersonalModel extends AbstractTableModel{
     
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -44,10 +47,16 @@ public class PersonalModel extends AbstractTableModel{
                 return person[rowIndex].getAge();
             case 3:
                 return person[rowIndex].getGames();
+            case 4:
+                return person[rowIndex].getContact();
         }
         return "unknown";
     }
     
+    
+    public boolean isCellEditable(int rowIndex, int columnIndex){
+        return false;
+    }
     @Override
     public String getColumnName(int column){
         switch (column) {
@@ -59,6 +68,8 @@ public class PersonalModel extends AbstractTableModel{
                 return "Wiek";
             case 3:
                 return "Planszówki";
+            case 4:
+                return "Kontakt";
         }
         return "Unknown";
     }
